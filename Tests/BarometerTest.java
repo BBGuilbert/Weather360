@@ -44,8 +44,8 @@ public class BarometerTest {
         
         //check that barometer data is in the proper range
         for(int i= 0; i<100; i++) {
-	        assertTrue(pressureInt < 1100);
-	        assertTrue(pressureInt > 900);
+	        assertTrue(pressureInt < 1101);
+	        assertTrue(pressureInt > 899);
         }
     }
     
