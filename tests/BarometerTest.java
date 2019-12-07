@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.Test;
 
-import model.Barometer;
+import sensor.Barometer;
 
 import static org.junit.Assert.assertTrue;
 
@@ -32,7 +32,7 @@ public class BarometerTest {
     }
 
     /**
-     * Test method for {@link model.Barometer#getData()}.
+     * Test method for {@link sensor.Barometer#getData()}.
      */
     @Test
     public void testGetData() 

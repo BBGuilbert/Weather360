@@ -1,7 +1,7 @@
 /**
  * 
  */
-package model;
+package sensor;
 
 import java.util.Random;
 

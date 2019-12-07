@@ -1,7 +1,7 @@
 /**
  * 
  */
-package model;
+package sensor;
 
 /**
  * @author Nicholas La Tour-Telles
