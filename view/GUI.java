@@ -50,6 +50,8 @@ public class GUI {
 	
 	private List<JTextArea> myDisplayAreas;
 	
+	private JFrame myHistoricalPopUp;
+	
 	public GUI() {
 		setUpGUI();
 	}
