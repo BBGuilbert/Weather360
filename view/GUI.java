@@ -2,9 +2,9 @@ package view;
 
 import javax.swing.JFrame;
 
-public class WeatherStation extends JFrame{
+public class GUI extends JFrame{
 	
-	public WeatherStation() {
+	public GUI() {
         // Sets Title on JFrame
         super("Weather Station");
         

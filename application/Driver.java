@@ -4,9 +4,9 @@ import java.awt.EventQueue;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import view.WeatherStation;
+import view.GUI;
 
-public class MyMain {
+public class Driver {
 
 	public static void main(String[] args) {
         try {
@@ -27,7 +27,7 @@ public class MyMain {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new WeatherStation();
+                new GUI();
             }
         });
 	}
