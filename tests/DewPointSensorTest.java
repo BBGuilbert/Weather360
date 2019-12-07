@@ -1,8 +1,8 @@
-package Tests;
+package tests;
 
 import org.junit.Test;
 
-import code.DewPointSensor;
+import model.DewPointSensor;
 
 import static org.junit.Assert.assertTrue;
 
@@ -31,7 +31,7 @@ public class DewPointSensorTest {
     }
 
     /**
-     * Test method for {@link code.DewPointSensor#getData()}.
+     * Test method for {@link model.DewPointSensor#getData()}.
      */
     @Test
     public void testGetData() 

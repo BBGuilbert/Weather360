@@ -1,7 +1,7 @@
 /**
  * 
  */
-package code;
+package model;
 
 /**
  * @author Nicholas La Tour-Telles

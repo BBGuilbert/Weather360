@@ -1,7 +1,7 @@
 /**
  * 
  */
-package code;
+package model;
 
 import java.util.Random;
 

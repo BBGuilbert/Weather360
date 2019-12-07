@@ -1,9 +1,10 @@
+package application;
 import java.awt.EventQueue;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import GUI.WeatherStation;
+import view.WeatherStation;
 
 public class MyMain {
 
