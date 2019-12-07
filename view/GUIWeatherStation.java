@@ -26,7 +26,7 @@ import javax.swing.border.Border;
  * @author miclo
  *
  */
-public class GUI {
+public class GUIWeatherStation {
 	
 	private JFrame myFrame;
 	
@@ -52,7 +52,7 @@ public class GUI {
 	
 	private JFrame myHistoricalPopUp;
 	
-	public GUI() {
+	public GUIWeatherStation() {
 		setUpGUI();
 	}
 	

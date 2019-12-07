@@ -4,7 +4,7 @@
 package controller;
 
 import model.WeatherSystem;
-import view.GUI;
+import view.GUIWeatherStation;
 
 /**
  * @author miclo
@@ -12,12 +12,12 @@ import view.GUI;
  */
 public class Controller {
 	
-	private GUI myGUI;
+	private GUIWeatherStation myGUI;
 	
 	private WeatherSystem myWeatherSystem;
 	
 	public Controller() {
-		myGUI = new GUI();
+		myGUI = new GUIWeatherStation();
 		myWeatherSystem = new WeatherSystem();
 	}
 
