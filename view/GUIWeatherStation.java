@@ -11,7 +11,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -28,6 +30,10 @@ import javax.swing.border.Border;
  */
 public class GUIWeatherStation {
 	
+	private static final SimpleDateFormat MY_DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+	
+	private static final SimpleDateFormat MY_TIME_FORMAT = new SimpleDateFormat("HH:mm:ss");
+	
 	private JFrame myFrame;
 	
 	private JPanel myMainPanel;
@@ -42,6 +48,8 @@ public class GUIWeatherStation {
 	
 	private JPanel myForecastPanel;
 	
+	private JLabel myLastRetrievedLabel;
+	
 	private JButton myRetrieveDatabaseButton;
 	
 	private JButton myRetrieveCurrentButton;
@@ -50,13 +58,16 @@ public class GUIWeatherStation {
 	
 	private List<JTextArea> myDisplayAreas;
 	
-	private JFrame myHistoricalPopUp;
+	private GUIRetrieveDatabase myHistoricalPopUp;
+	
+	private GUIRetrieveCurrent myCurrentPopUp;
 	
 	public GUIWeatherStation() {
 		setUpGUI();
 	}
 	
 	private void setUpGUI() {
+		setUpFrames();
 		setUpTitlePanel();
 		setUpButtonPanel();
 		setUpDisplayPanel();
@@ -97,6 +108,17 @@ public class GUIWeatherStation {
 		
 		c.gridy = 1;
 		myButtonPanel.add(myRetrieveCurrentButton, c);
+		
+		c.gridy = 2;
+		myLastRetrievedLabel = new JLabel();
+		updateLastRetrievedLabel();
+		myButtonPanel.add(myLastRetrievedLabel, c);
+	}
+	
+	private void updateLastRetrievedLabel() {
+		String tempDate = MY_DATE_FORMAT.format(new Date());
+		String tempTime = MY_TIME_FORMAT.format(new Date());
+		myLastRetrievedLabel.setText("<html><body>Data last retrieved on:<br> " + tempDate + " at " + tempTime + "</body></html>");
 	}
 	
 	private void setUpButtons() {
@@ -106,8 +128,8 @@ public class GUIWeatherStation {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				myHistoricalPopUp.showFrame();
 				// TODO Auto-generated method stub
-				
 			}
 			
 		});
@@ -117,6 +139,7 @@ public class GUIWeatherStation {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				myCurrentPopUp.showFrame();
 				// TODO Auto-generated method stub
 				
 			}
@@ -189,6 +212,10 @@ public class GUIWeatherStation {
 		myMainPanel.add(myButtonPanel, BorderLayout.WEST);
 	}
 	
+	private void setUpFrames() {
+		myHistoricalPopUp = new GUIRetrieveDatabase();
+		myCurrentPopUp = new GUIRetrieveCurrent();
+	}
 
 
 }

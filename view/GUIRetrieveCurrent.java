@@ -17,11 +17,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class GUIRetrieveDatabase {
+public class GUIRetrieveCurrent {
 	
 	private JFrame myFrame;
-	
-	private GUIHistoricalData myHistoricalDataFrame;
 	
 	private JPanel myMainPanel;
 	
@@ -35,11 +33,11 @@ public class GUIRetrieveDatabase {
 	
 	private List<JCheckBox> myCheckBoxes;
 	
-	public GUIRetrieveDatabase() {
-		setUpGUIRetrieveDatabase();
+	public GUIRetrieveCurrent() {
+		setUpGUIRetrieveCurrent();
 	}
 	
-	private void setUpGUIRetrieveDatabase() {
+	private void setUpGUIRetrieveCurrent() {
 		setUpTitlePanel();
 		setUpCheckBoxPanel();
 		setUpButtonPanel();
@@ -48,10 +46,9 @@ public class GUIRetrieveDatabase {
 	}
 	
 	private void setUpFrame() {
-		myHistoricalDataFrame = new GUIHistoricalData(); 
 		myFrame = new JFrame();
 		myFrame.add(myMainPanel);
-		myFrame.setTitle("Download Historical Data from Database");
+		myFrame.setTitle("Download Current Data");
 		myFrame.setBounds(0, 0, 600, 400);
 		myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		myFrame.setLocationRelativeTo(null);
@@ -64,7 +61,7 @@ public class GUIRetrieveDatabase {
 	
 	private void setUpTitlePanel() {
 		myTitlePanel = new JPanel();
-		JLabel title = new JLabel("Download Historical Data from Database");
+		JLabel title = new JLabel("Download Current Data");
 		title.setFont(title.getFont().deriveFont(24.0f));
 		myTitlePanel.add(title);
 	}
@@ -81,6 +78,11 @@ public class GUIRetrieveDatabase {
 		createCheckBox("Dew Point");
 		createCheckBox("Rainfall");
 		createCheckBox("Barometer");
+		myCheckBoxes.get(0).setSelected(true);
+		myCheckBoxes.get(1).setSelected(true);
+		myCheckBoxes.get(0).setEnabled(false);
+		myCheckBoxes.get(1).setEnabled(false);
+		
 	}
 	
 	private void createCheckBox(String name) {
@@ -95,7 +97,7 @@ public class GUIRetrieveDatabase {
 		GridBagConstraints c = new GridBagConstraints();		
 		myButtonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-		myViewButton = new JButton("View Selected Data");
+		myViewButton = new JButton("Return Selected Data");
 		myViewButton.setFont(myViewButton.getFont().deriveFont(13.0f));
 		myViewButton.setPreferredSize(new Dimension(180,80));
 		
@@ -104,7 +106,7 @@ public class GUIRetrieveDatabase {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				myFrame.setVisible(false);
-				myHistoricalDataFrame.showFrame();
+				// TODO
 			}
 			
 		});

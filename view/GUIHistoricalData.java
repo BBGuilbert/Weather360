@@ -17,41 +17,38 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class GUIRetrieveDatabase {
+public class GUIHistoricalData {
 	
 	private JFrame myFrame;
-	
-	private GUIHistoricalData myHistoricalDataFrame;
 	
 	private JPanel myMainPanel;
 	
 	private JPanel myTitlePanel;
 	
-	private JPanel myCheckBoxPanel;
+	private JPanel myDataPanel;
 	
 	private JPanel myButtonPanel;
 	
-	private JButton myViewButton;
+	private JButton myExitButton;
 	
 	private List<JCheckBox> myCheckBoxes;
 	
-	public GUIRetrieveDatabase() {
-		setUpGUIRetrieveDatabase();
+	public GUIHistoricalData() {
+		setUpGUIHistoricalData();
 	}
 	
-	private void setUpGUIRetrieveDatabase() {
+	private void setUpGUIHistoricalData() {
 		setUpTitlePanel();
-		setUpCheckBoxPanel();
+		setUpDataPanel();
 		setUpButtonPanel();
 		setUpMainPanel();
 		setUpFrame();
 	}
 	
 	private void setUpFrame() {
-		myHistoricalDataFrame = new GUIHistoricalData(); 
 		myFrame = new JFrame();
 		myFrame.add(myMainPanel);
-		myFrame.setTitle("Download Historical Data from Database");
+		myFrame.setTitle("Historical Data");
 		myFrame.setBounds(0, 0, 600, 400);
 		myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		myFrame.setLocationRelativeTo(null);
@@ -64,30 +61,13 @@ public class GUIRetrieveDatabase {
 	
 	private void setUpTitlePanel() {
 		myTitlePanel = new JPanel();
-		JLabel title = new JLabel("Download Historical Data from Database");
+		JLabel title = new JLabel("Historical Data");
 		title.setFont(title.getFont().deriveFont(24.0f));
 		myTitlePanel.add(title);
 	}
 	
-	private void setUpCheckBoxPanel() {
-		myCheckBoxes = new ArrayList<>();
-		myCheckBoxPanel = new JPanel(new GridLayout(3,3));
-		createCheckBox("Date");
-		createCheckBox("Time");
-		createCheckBox("Forecast");
-		createCheckBox("Wind Speed");
-		createCheckBox("Wind Direction");
-		createCheckBox("Humidity");
-		createCheckBox("Dew Point");
-		createCheckBox("Rainfall");
-		createCheckBox("Barometer");
-	}
-	
-	private void createCheckBox(String name) {
-		JCheckBox temp = new JCheckBox(name);
-		temp.setFont(temp.getFont().deriveFont(13.0f));
-		myCheckBoxes.add(temp);
-		myCheckBoxPanel.add(temp);
+	private void setUpDataPanel() {
+		myDataPanel = new JPanel();
 	}
 	
 	private void setUpButtonPanel() {
@@ -95,28 +75,27 @@ public class GUIRetrieveDatabase {
 		GridBagConstraints c = new GridBagConstraints();		
 		myButtonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-		myViewButton = new JButton("View Selected Data");
-		myViewButton.setFont(myViewButton.getFont().deriveFont(13.0f));
-		myViewButton.setPreferredSize(new Dimension(180,80));
+		myExitButton = new JButton("Exit");
+		myExitButton.setFont(myExitButton.getFont().deriveFont(13.0f));
+		myExitButton.setPreferredSize(new Dimension(180,80));
 		
-		myViewButton.addActionListener(new ActionListener() {
+		myExitButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				myFrame.setVisible(false);
-				myHistoricalDataFrame.showFrame();
 			}
 			
 		});
 		c.gridx = 0;
 		c.gridy = 0;
-		myButtonPanel.add(myViewButton, c);
+		myButtonPanel.add(myExitButton, c);
 	}
 	
 	private void setUpMainPanel() {
 		myMainPanel = new JPanel(new BorderLayout());
 		myMainPanel.add(myTitlePanel, BorderLayout.NORTH);
-		myMainPanel.add(myCheckBoxPanel, BorderLayout.CENTER);
+		myMainPanel.add(myDataPanel, BorderLayout.CENTER);
 		myMainPanel.add(myButtonPanel, BorderLayout.WEST);
 	}
 
