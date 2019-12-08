@@ -16,8 +16,11 @@ public class ForecastSensor extends AbstractSensor {
 	}
 
 	public String getData() {
+		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + " | " + weather[myR.nextInt(4)];
+	}
+
+	public String toString() {
 		return "Temp is - " + String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + 
 				" degrees | Weather is - " + weather[myR.nextInt(4)];
 	}
-
 }

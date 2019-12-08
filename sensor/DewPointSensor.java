@@ -20,6 +20,11 @@ public class DewPointSensor extends AbstractSensor {
 	}
 
 	public String getData() {
+		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData);
+	}
+	
+	@Override
+	public String toString() {
 		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + " degrees";
 	}
 

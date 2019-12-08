@@ -21,6 +21,10 @@ public class RainfallSensor extends AbstractSensor {
 	}
 
 	public String getData() {
+		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData);
+	}
+	
+	public String toString() {
 		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + " Inches";
 	}
 

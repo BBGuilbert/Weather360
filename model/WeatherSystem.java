@@ -17,13 +17,15 @@ import java.util.TimerTask;
 // and if they do do we update all fields or just some of the fields
 public class WeatherSystem {
 	
+	private final Timer myTimer;
+	
 	private final WeatherDatabase myWeatherDatabase;
 	
 	private final Console myConsole;
 	
 	public WeatherSystem() {
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
+		myTimer = new Timer();
+		myTimer.schedule(new TimerTask() {
 		    @Override
 		    public void run() {
 		    	List<String> tempList = Arrays.asList(myConsole.getSensorData());

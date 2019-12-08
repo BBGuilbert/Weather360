@@ -24,11 +24,11 @@ public class WindSensor extends AbstractSensor {
 	}
 	
 	public String getWindDirectionData() {
-		return " MPH | Direction - " + myDir[myR.nextInt(8)];
+		return myDir[myR.nextInt(8)];
 	}
 	
 	public String getWindSpeedData() {
-		return "Wind speed - " + String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData);
+		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData);
 	}
 
 }

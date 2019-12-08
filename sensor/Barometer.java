@@ -14,7 +14,13 @@ public class Barometer extends AbstractSensor {
 	public Barometer() {
 		super();
 	}
+	
 	public String getData() {
+		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData);
+	}
+	
+	@Override
+	public String toString() {
 		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + " millibars";
 	}
 
