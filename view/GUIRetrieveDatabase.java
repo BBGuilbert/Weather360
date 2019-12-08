@@ -104,7 +104,13 @@ public class GUIRetrieveDatabase {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				myFrame.setVisible(false);
-				myHistoricalDataFrame.showFrame();
+				List<String> checkedBoxes = new ArrayList<>();
+				for(JCheckBox box: myCheckBoxes) {
+					if(box.isSelected()) {
+						checkedBoxes.add(box.getText());
+					}
+				}
+				myHistoricalDataFrame.showFrame(checkedBoxes.toArray(new String[checkedBoxes.size()]));
 			}
 			
 		});
@@ -119,5 +125,6 @@ public class GUIRetrieveDatabase {
 		myMainPanel.add(myCheckBoxPanel, BorderLayout.CENTER);
 		myMainPanel.add(myButtonPanel, BorderLayout.WEST);
 	}
+
 
 }
