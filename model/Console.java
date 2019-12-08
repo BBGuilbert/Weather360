@@ -3,6 +3,9 @@
  */
 package model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import sensor.Barometer;
 import sensor.DewPointSensor;
 import sensor.ForecastSensor;
@@ -15,6 +18,10 @@ import sensor.WindSensor;
  *
  */
 public class Console {
+	
+	private static final SimpleDateFormat MY_DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+	
+	private static final SimpleDateFormat MY_TIME_FORMAT = new SimpleDateFormat("HH:mm:ss");
 	
 	private final Barometer myBarometer;
 	
@@ -40,13 +47,16 @@ public class Console {
 	}
 	
 	public String[] getSensorData() {
-		String[] mySensorData = new String[6];
-		mySensorData[0] = myBarometer.getData();
-		mySensorData[1] = myDewPointSensor.getData();
+		String[] mySensorData = new String[9];
+		mySensorData[0] = MY_DATE_FORMAT.format(new Date());
+		mySensorData[1] = MY_TIME_FORMAT.format(new Date());
 		mySensorData[2] = myForecastSensor.getData();
-		mySensorData[3] = myHumiditySensor.getData();
-		mySensorData[4] = myRainfallSensor.getData();
-		mySensorData[5] = myWindSensor.getData();
+		mySensorData[3] = myWindSensor.getWindSpeedData();
+		mySensorData[4] = myWindSensor.getWindDirectionData();
+		mySensorData[5] = myHumiditySensor.getData();
+		mySensorData[6] = myDewPointSensor.getData();
+		mySensorData[7] = myRainfallSensor.getData();
+		mySensorData[8] = myBarometer.getData();
 		return mySensorData;
 	}
 

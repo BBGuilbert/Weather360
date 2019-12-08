@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.TimerTask;
 
 /**
  * @author miclo
@@ -28,7 +29,6 @@ public class WeatherDatabase {
 			csvWriter.append("\n");
 			csvWriter.flush();
 			csvWriter.close();
-		
 		} catch (IOException e) {
 			System.out.println("Unable to update data in database.");
 		}

@@ -1,24 +1,18 @@
 2019-12-07,13:50:50, SUNNY, 23, N, 34%, 55, 0.1, 900
-2019-12-07,13:50:50, SNOW, 22, W, 32%, 55, 0.1, 900
-2019-12-07,13:50:50, RAIN, 21, S, 30%, 55, 0.1, 900
-2019-12-07,13:50:50, CLOUDY, 20, E, 28%, 55, 0.1, 900
-2019-12-07,13:50:50, SUNNY, 23, N, 34%, 55, 0.1, 900
-2019-12-07,13:50:50, SNOW, 22, W, 32%, 55, 0.1, 900
-2019-12-07,13:50:50, RAIN, 21, S, 30%, 55, 0.1, 900
-2019-12-07,13:50:50, CLOUDY, 20, E, 28%, 55, 0.1, 900
-2019-12-07,13:50:50, SUNNY, 23, N, 34%, 55, 0.1, 900
-2019-12-07,13:50:50, SNOW, 22, W, 32%, 55, 0.1, 900
-2019-12-07,13:50:50, RAIN, 21, S, 30%, 55, 0.1, 900
-2019-12-07,13:50:50, CLOUDY, 20, E, 28%, 55, 0.1, 900
-2019-12-07,13:50:50, SUNNY, 23, N, 34%, 55, 0.1, 900
-2019-12-07,13:50:50, SNOW, 22, W, 32%, 55, 0.1, 900
-2019-12-07,13:50:50, RAIN, 21, S, 30%, 55, 0.1, 900
-2019-12-07,13:50:50, CLOUDY, 20, E, 28%, 55, 0.1, 900
-2019-12-07,13:50:50, SUNNY, 23, N, 34%, 55, 0.1, 900
-2019-12-07,13:50:50, SNOW, 22, W, 32%, 55, 0.1, 900
-2019-12-11,13:50:50, RAIN, 21, S, 30%, 55, 0.1, 900
-2019-12-12,13:50:50, CLOUDY, 20, E, 28%, 55, 0.1, 900
-2019-12-13,13:50:50, SUNNY, 23, N, 34%, 55, 0.1, 900
-2019-12-14,13:50:50, SNOW, 22, W, 32%, 55, 0.1, 900
-2019-12-15,13:50:50, RAIN, 21, S, 30%, 55, 0.1, 900
-2019-12-16,13:50:50, CLOUDY, 20, E, 28%, 55, 0.1, 900
+12-07-2019,22:40:42,Temp is - 80 degrees | Weather is - Snow,Wind speed - 7, MPH | Direction - S,71 g/m3,28 degrees,4 Inches,1069 millibars
+12-07-2019,22:40:47,Temp is - 60 degrees | Weather is - Snow,Wind speed - 5, MPH | Direction - SW,73 g/m3,41 degrees,1 Inches,953 millibars
+12-07-2019,22:40:52,Temp is - 82 degrees | Weather is - Sunny,Wind speed - 2, MPH | Direction - NE,73 g/m3,95 degrees,3 Inches,1089 millibars
+12-07-2019,22:40:57,Temp is - 88 degrees | Weather is - Cloudy,Wind speed - 6, MPH | Direction - NE,67 g/m3,80 degrees,1 Inches,1001 millibars
+12-07-2019,22:41:02,Temp is - 74 degrees | Weather is - Rain,Wind speed - 1, MPH | Direction - SE,69 g/m3,83 degrees,1 Inches,960 millibars
+12-07-2019,22:41:07,Temp is - 46 degrees | Weather is - Sunny,Wind speed - 2, MPH | Direction - NE,75 g/m3,74 degrees,3 Inches,954 millibars
+12-07-2019,22:41:12,Temp is - 95 degrees | Weather is - Cloudy,Wind speed - 8, MPH | Direction - N,68 g/m3,96 degrees,3 Inches,1016 millibars
+12-07-2019,22:41:17,Temp is - 61 degrees | Weather is - Sunny,Wind speed - 2, MPH | Direction - E,80 g/m3,25 degrees,2 Inches,946 millibars
+12-07-2019,22:41:22,Temp is - 77 degrees | Weather is - Cloudy,Wind speed - 7, MPH | Direction - W,68 g/m3,27 degrees,5 Inches,993 millibars
+12-07-2019,22:41:27,Temp is - 23 degrees | Weather is - Rain,Wind speed - 8, MPH | Direction - SE,70 g/m3,52 degrees,5 Inches,1017 millibars
+12-07-2019,22:41:32,Temp is - 57 degrees | Weather is - Cloudy,Wind speed - 1, MPH | Direction - SW,77 g/m3,36 degrees,6 Inches,1065 millibars
+12-07-2019,22:41:37,Temp is - 84 degrees | Weather is - Sunny,Wind speed - 3, MPH | Direction - SW,76 g/m3,52 degrees,2 Inches,938 millibars
+12-07-2019,22:41:42,Temp is - 51 degrees | Weather is - Sunny,Wind speed - 3, MPH | Direction - W,73 g/m3,83 degrees,1 Inches,978 millibars
+12-07-2019,22:41:47,Temp is - 99 degrees | Weather is - Rain,Wind speed - 3, MPH | Direction - N,73 g/m3,82 degrees,6 Inches,958 millibars
+12-07-2019,22:41:52,Temp is - 84 degrees | Weather is - Cloudy,Wind speed - 1, MPH | Direction - W,68 g/m3,75 degrees,6 Inches,1022 millibars
+12-07-2019,22:41:57,Temp is - 43 degrees | Weather is - Snow,Wind speed - 6, MPH | Direction - NW,79 g/m3,31 degrees,6 Inches,943 millibars
+12-07-2019,22:42:02,Temp is - 87 degrees | Weather is - Cloudy,Wind speed - 2, MPH | Direction - E,76 g/m3,77 degrees,3 Inches,1033 millibars
