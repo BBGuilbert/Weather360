@@ -95,7 +95,7 @@ public class Console {
 		mySensorData[1] = MY_TIME_FORMAT.format(new Date());
 		mySensorData[2] = myForecastSensor.toString();
 		mySensorData[3] = myWindSensor.getWindSpeedDataString();
-		mySensorData[4] = myWindSensor.getWindDirectionDataString();
+		mySensorData[4] = myWindSensor.getWindDirectionData();
 		mySensorData[5] = myHumiditySensor.toString();
 		mySensorData[6] = myDewPointSensor.toString();
 		mySensorData[7] = myRainfallSensor.toString();
