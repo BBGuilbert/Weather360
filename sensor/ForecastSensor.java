@@ -23,6 +23,6 @@ public class ForecastSensor extends AbstractSensor {
 		int temp = myR.nextInt(myHighData - myLowData) + myLowData;
 		int snowCheck = 4;
 		if(temp > 32) { snowCheck = 3; }
-		return String.valueOf(temp) + " degrees Farenheit | " + weather[myR.nextInt(snowCheck)];
+		return weather[myR.nextInt(snowCheck)] + " | " + String.valueOf(temp) + " degrees Farenheit";
 	}
 }
