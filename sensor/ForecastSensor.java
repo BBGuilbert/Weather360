@@ -7,7 +7,7 @@ package sensor;
  */
 public class ForecastSensor extends AbstractSensor {
 
-	private String weather[] = {"Sunny", "Snow", "Cloudy", "Rain"};
+	private String weather[] = {"Sunny", "Cloudy", "Rain", "Snow"};
 	private int myLowData = 20;
 	private int myHighData = 100;
 	
@@ -20,7 +20,9 @@ public class ForecastSensor extends AbstractSensor {
 	}
 
 	public String toString() {
-		return "Temp is - " + String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + 
-				" degrees | Weather is - " + weather[myR.nextInt(4)];
+		int temp = myR.nextInt(myHighData - myLowData) + myLowData;
+		int snowCheck = 4;
+		if(temp > 32) { snowCheck = 3; }
+		return String.valueOf(temp) + " degrees Farenheit | " + weather[myR.nextInt(snowCheck)];
 	}
 }

@@ -59,5 +59,19 @@ public class Console {
 		mySensorData[8] = myBarometer.getData();
 		return mySensorData;
 	}
+	
+	public String[] getSensorDataFormatted() {
+		String[] mySensorData = new String[9];
+		mySensorData[0] = MY_DATE_FORMAT.format(new Date());
+		mySensorData[1] = MY_TIME_FORMAT.format(new Date());
+		mySensorData[2] = myForecastSensor.toString();
+		mySensorData[3] = myWindSensor.getWindSpeedDataString();
+		mySensorData[4] = myWindSensor.getWindDirectionDataString();
+		mySensorData[5] = myHumiditySensor.toString();
+		mySensorData[6] = myDewPointSensor.toString();
+		mySensorData[7] = myRainfallSensor.toString();
+		mySensorData[8] = myBarometer.toString();
+		return mySensorData;
+	}
 
 }

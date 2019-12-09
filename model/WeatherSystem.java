@@ -37,7 +37,7 @@ public class WeatherSystem {
 	}
 	
 	public String[] getCurrentWeather() {
-		return myConsole.getSensorData();
+		return myConsole.getSensorDataFormatted();
 	}
 	
 	public File getHistoricalData() {

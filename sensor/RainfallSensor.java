@@ -10,8 +10,8 @@ package sensor;
 public class RainfallSensor extends AbstractSensor {
 
 	
-	private int myLowData = 1;
-	private int myHighData= 7;
+	private int myLowData = 0;
+	private int myHighData= 10;
 	
 	/**
 	 * 
@@ -21,11 +21,11 @@ public class RainfallSensor extends AbstractSensor {
 	}
 
 	public String getData() {
-		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData);
+		return String.valueOf((myR.nextInt(myHighData - myLowData) + myLowData)/10.0);
 	}
 	
 	public String toString() {
-		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + " Inches";
+		return String.valueOf((myR.nextInt(myHighData - myLowData) + myLowData)/10.0) + " inches";
 	}
 
 }
