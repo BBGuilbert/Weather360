@@ -128,11 +128,11 @@ public class GUIHistoricalData {
 	 * @param selectedData The data that was selected to be displayed.
 	 */
 	private void setUpDataPanel(String[] selectedData) {
+		myDataPanel.removeAll();
 		if(selectedData.length == 0) {
 			myDataPanel.add(new JLabel("No data selected."));
 			return;
 		}
-		myDataPanel.removeAll();
 		Set<Integer> selectedIndices = new HashSet<>();
 		for(String i : selectedData) {
 			selectedIndices.add(myDatabaseMap.get(i));
