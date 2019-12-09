@@ -16,28 +16,42 @@ import sensor.RainfallSensor;
 import sensor.WindSensor;
 
 /**
- * @author miclo
- *
+ * This is the Console class that retrieves all of the
+ * data from the weather sensors.
+ * 
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Britanny Guilbert, Duc Chau
+ * @version 12.9.19
  */
 public class Console {
 	
+	/** This is the date format used for the program. */
 	private static final SimpleDateFormat MY_DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 	
+	/** This is the time format used for the program. */
 	private static final SimpleDateFormat MY_TIME_FORMAT = new SimpleDateFormat("HH:mm:ss");
 	
+	/** The barometer sensor. */
 	private final Barometer myBarometer;
 	
+	/** The dew point sensor. */
 	private final DewPointSensor myDewPointSensor;
 	
+	/** The forecast sensor. */
 	private final ForecastSensor myForecastSensor;
 	
+	/** The humidity sensor. */
 	private final HumiditySensor myHumiditySensor;
 	
+	/** The rainfall sensor. */
 	private final RainfallSensor myRainfallSensor;
 	
+	/** The wind sensor. */
 	private final WindSensor myWindSensor;
 	
-	
+	/**
+	 * Initializes all of the weather sensors of the
+	 * weather system.
+	 */
 	public Console() {
 		myBarometer = new Barometer();
 		myDewPointSensor = new DewPointSensor();
@@ -48,6 +62,13 @@ public class Console {
 		
 	}
 	
+	/**
+	 * Retrieves all of the data from all of the sensors
+	 * and provides time and date of when the data was 
+	 * retrieved.
+	 * 
+	 * @return Array of strings representing the fetched data from the sensors.
+	 */
 	public String[] getSensorData() {
 		String[] mySensorData = new String[9];
 		mySensorData[0] = MY_DATE_FORMAT.format(new Date());
@@ -62,6 +83,12 @@ public class Console {
 		return mySensorData;
 	}
 	
+	/**
+	 * Retrieves all of the data from all of the sensors
+	 * in a formatted format.
+	 * 
+	 * @return Array of formatted strings representing the data from the sensors.
+	 */
 	public String[] getSensorDataFormatted() {
 		String[] mySensorData = new String[9];
 		mySensorData[0] = MY_DATE_FORMAT.format(new Date());

@@ -11,17 +11,30 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @author miclo
- *
+ * This is the class that handles the database
+ * for the weather system.
+ * 
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Britanny Guilbert, Duc Chau
+ * @version 12.9.19
  */
 public class WeatherDatabase {
 	
-	File myDatabase;
+	/** The file containing the database for the system. */
+	private final File myDatabase;
 	
+	/**
+	 * Initialize the file for the database. 
+	 */
 	public WeatherDatabase() {
 		myDatabase = new File("database.csv");
 	}
 	
+	/**
+	 * Updates the database by adding the data to the
+	 * database.
+	 * 
+	 * @param theData The data to be added to the database. 
+	 */
 	public void addData(List<String> theData) {
 		FileWriter csvWriter;
 		try {
@@ -35,6 +48,11 @@ public class WeatherDatabase {
 		}
 	}
 	
+	/**
+	 * Sends the database report. 
+	 * 
+	 * @return File containing the databse report.
+	 */
 	public File sendReport() {
 		return myDatabase;
 	}
