@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +34,8 @@ public class GUIRetrieveCurrent {
 	private JButton myViewButton;
 	
 	private List<JCheckBox> myCheckBoxes;
+	
+	private final PropertyChangeSupport myPCS = new PropertyChangeSupport(this);
 	
 	public GUIRetrieveCurrent() {
 		setUpGUIRetrieveCurrent();
@@ -106,7 +110,14 @@ public class GUIRetrieveCurrent {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				myFrame.setVisible(false);
-				// TODO
+				List<String> checkedBoxes = new ArrayList<>();
+				for(JCheckBox box: myCheckBoxes) {
+					if(box.isSelected()) {
+						checkedBoxes.add(box.getText());
+					}
+				}
+				// TODO send this list of checkedBoxes to GUIWeatherStation so it can update fields accordingly
+		        myPCS.firePropertyChange("retrieve", null, checkedBoxes.toArray(new String[checkedBoxes.size()]));  
 			}
 			
 		});
@@ -121,5 +132,23 @@ public class GUIRetrieveCurrent {
 		myMainPanel.add(myCheckBoxPanel, BorderLayout.CENTER);
 		myMainPanel.add(myButtonPanel, BorderLayout.WEST);
 	}
+	
+    /**
+     * Adds a listener for property change events from this class.
+     * 
+     * @param theListener a PropertyChangeListener to add.
+     */
+    public void addPropertyChangeListener(final PropertyChangeListener theListener) {
+        myPCS.addPropertyChangeListener(theListener);
+    }
+    
+    /**
+     * Removes a listener for property change events from this class.
+     * 
+     * @param theListener a PropertyChangeListener to remove.
+     */
+    public void removePropertyChangeListener(final PropertyChangeListener theListener) {
+        myPCS.removePropertyChangeListener(theListener);
+    }
 
 }

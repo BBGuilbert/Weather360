@@ -11,10 +11,20 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -28,11 +38,13 @@ import javax.swing.border.Border;
  * @author miclo
  *
  */
-public class GUIWeatherStation {
+public class GUIWeatherStation implements PropertyChangeListener {
 	
 	private static final SimpleDateFormat MY_DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 	
 	private static final SimpleDateFormat MY_TIME_FORMAT = new SimpleDateFormat("HH:mm:ss");
+	
+	private final PropertyChangeSupport myPCS = new PropertyChangeSupport(this);
 	
 	private JFrame myFrame;
 	
@@ -62,8 +74,18 @@ public class GUIWeatherStation {
 	
 	private GUIRetrieveCurrent myCurrentPopUp;
 	
+	private Map<String, Integer> myDatabaseMap;
+	
 	public GUIWeatherStation() {
+		setUpDatabaseMap();
 		setUpGUI();
+	}
+	
+	public void fetchAllData() {
+		String[] retrieveAllData = 
+			{"Date", "Time", "Forecast", "Wind Speed", "Wind Direction", "Humidity", "Dew Point", "Rainfall", "Barometer"};
+        myPCS.firePropertyChange("retrieve", null, retrieveAllData);  
+
 	}
 	
 	private void setUpGUI() {
@@ -121,6 +143,25 @@ public class GUIWeatherStation {
 		myLastRetrievedLabel.setText("<html><body>Data last retrieved on:<br> " + tempDate + " at " + tempTime + "</body></html>");
 	}
 	
+	private void updateSelectedFields(String[] fetchedData, String[] selectedData) {
+		Set<Integer> selectedIndices = new HashSet<>();
+		for(String i : selectedData) {
+			selectedIndices.add(myDatabaseMap.get(i));
+		}	
+		for(int i = 0; i < myDisplayAreas.size(); i++) {
+			if(selectedIndices.contains(i + 2)) {
+				myDisplayAreas.get(i).setText(fetchedData[i+2]);
+				}
+			}
+	}
+	
+	public void updateData(String[] fetchedData, String[] selectedFields) {
+		updateSelectedFields(fetchedData, selectedFields);
+		if(selectedFields.length > 2) {
+			updateLastRetrievedLabel();
+		}
+	}
+	
 	private void setUpButtons() {
 		myRetrieveDatabaseButton = new JButton("Retrieve Historical Data");
 		myRetrieveDatabaseButton.setPreferredSize(new Dimension(180,80));
@@ -140,8 +181,6 @@ public class GUIWeatherStation {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				myCurrentPopUp.showFrame();
-				// TODO Auto-generated method stub
-				
 			}
 			
 		});
@@ -149,11 +188,11 @@ public class GUIWeatherStation {
 	}
 	
 	private void setUpDisplayPanel() {
-		myDisplayPanel = new JPanel(new BorderLayout());
-		setUpForecastPanel();
-		mySensorPanel = new JPanel(new GridLayout(3,2));
 		myDisplayPanels = new ArrayList<>();
 		myDisplayAreas = new ArrayList<>();
+		myDisplayPanel = new JPanel(new BorderLayout());
+		mySensorPanel = new JPanel(new GridLayout(3,2));
+		setUpForecastPanel();
 		setUpIndividualDisplays("Wind Speed");
 		setUpIndividualDisplays("Wind Direction");
 		setUpIndividualDisplays("Humidity");
@@ -179,7 +218,7 @@ public class GUIWeatherStation {
 	            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 	    
 		tempPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-	    tempArea.setEnabled(false); // This prevents user from manipulating text area
+	    tempArea.setEditable(false);; // This prevents user from manipulating text area
 			
 		tempPanel.add(tempLabel);
 		tempPanel.add(tempArea);
@@ -199,10 +238,12 @@ public class GUIWeatherStation {
 	            BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 	    
 	    myForecastPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-	    tempArea.setEnabled(false);
+	    tempArea.setEditable(false);
 		
 	    myForecastPanel.add(tempLabel);
 	    myForecastPanel.add(tempArea);
+	    
+	    myDisplayAreas.add(tempArea);
 	}
 	
 	private void setUpMainPanel() {
@@ -215,7 +256,47 @@ public class GUIWeatherStation {
 	private void setUpFrames() {
 		myHistoricalPopUp = new GUIRetrieveDatabase();
 		myCurrentPopUp = new GUIRetrieveCurrent();
+		myCurrentPopUp.addPropertyChangeListener(this);
 	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent theEvent) {
+        if (theEvent.getPropertyName().equals("retrieve")) {
+	        myPCS.firePropertyChange("retrieve", null, theEvent.getNewValue());  
+        }
+	}
+	
+    /**
+     * Adds a listener for property change events from this class.
+     * 
+     * @param theListener a PropertyChangeListener to add.
+     */
+    public void addPropertyChangeListener(final PropertyChangeListener theListener) {
+        myPCS.addPropertyChangeListener(theListener);
+    }
+    
+    /**
+     * Removes a listener for property change events from this class.
+     * 
+     * @param theListener a PropertyChangeListener to remove.
+     */
+    public void removePropertyChangeListener(final PropertyChangeListener theListener) {
+        myPCS.removePropertyChangeListener(theListener);
+    }
+    
+	private void setUpDatabaseMap() {
+		myDatabaseMap = new HashMap<>();
+		myDatabaseMap.put("Date",0);
+		myDatabaseMap.put("Time",1);
+		myDatabaseMap.put("Forecast",2);
+		myDatabaseMap.put("Wind Speed",3);
+		myDatabaseMap.put("Wind Direction",4);
+		myDatabaseMap.put("Humidity",5);
+		myDatabaseMap.put("Dew Point",6);
+		myDatabaseMap.put("Rainfall",7);
+		myDatabaseMap.put("Barometer",8);
+	}
+
 
 
 }

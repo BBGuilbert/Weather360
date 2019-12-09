@@ -25,6 +25,8 @@ public class WeatherSystem {
 	
 	public WeatherSystem() {
 		myTimer = new Timer();
+		myWeatherDatabase = new WeatherDatabase();
+		myConsole = new Console();
 		myTimer.schedule(new TimerTask() {
 		    @Override
 		    public void run() {
@@ -32,8 +34,6 @@ public class WeatherSystem {
 		    	myWeatherDatabase.addData(tempList);
 		    }
 		}, 0, 30000);
-		myWeatherDatabase = new WeatherDatabase();
-		myConsole = new Console();
 	}
 	
 	public String[] getCurrentWeather() {

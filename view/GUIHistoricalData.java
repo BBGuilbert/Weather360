@@ -49,8 +49,8 @@ public class GUIHistoricalData {
 	private static final File DATABASE_FILE = new File("database.csv");
 	
 	public GUIHistoricalData() {
-		setUpGUIHistoricalData();
 		setUpDatabaseMap();
+		setUpGUIHistoricalData();
 	}
 	
 	private void setUpGUIHistoricalData() {
