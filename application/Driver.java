@@ -1,6 +1,8 @@
 /**
- * 
+ * TCSS 360 Software Development
+ * Project 4
  */
+
 package application;
 
 import java.awt.EventQueue;

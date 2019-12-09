@@ -1,6 +1,8 @@
 /**
- * 
+ * TCSS 360 Software Development
+ * Project 4
  */
+
 package model;
 
 import java.text.SimpleDateFormat;

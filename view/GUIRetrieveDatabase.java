@@ -1,3 +1,8 @@
+/**
+ * TCSS 360 Software Development
+ * Project 4
+ */
+
 package view;
 
 import java.awt.BorderLayout;

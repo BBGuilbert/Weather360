@@ -1,6 +1,8 @@
 /**
- * 
+ * TCSS 360 Software Development
+ * Project 4
  */
+
 package controller;
 
 import java.beans.PropertyChangeEvent;

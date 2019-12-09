@@ -1,6 +1,8 @@
 /**
- * 
+ * TCSS 360 Software Development
+ * Project 4
  */
+
 package model;
 
 import java.io.File;
@@ -13,8 +15,6 @@ import java.util.TimerTask;
  * @author miclo
  *
  */
-// TODO How often do we update database - do we update only if they select to retrieve data,
-// and if they do do we update all fields or just some of the fields
 public class WeatherSystem {
 	
 	private final Timer myTimer;
