@@ -6,31 +6,36 @@
 package sensor;
 
 /**
- * @author Nicholas La Tour-Telles
- *
+ * This is the HumiditySensor class that represents
+ * the Humidity sensor of the weather system.
+ * 
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
+ * @version 12.9.19
  */
 public class HumiditySensor extends AbstractSensor {
 	
-	/**
-	 * The low end for the humidity.
-	 */
-	private int myLowData = 65;
+	/** The low bound for the humidity. */
+	private static final int MY_LOW_DATA = 65;
+	
+	/** The upper bound for the humidity. */
+	private static final int MY_HIGH_DATA = 81;
 	
 	/**
-	 * The high end for the humidity.
+	 * Initializes the sensor fields.
 	 */
-	private int myHighData = 81;
-	
 	public HumiditySensor() {
 		super();
 	}
+	
+	@Override
 	public String getData() {
 		
-		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData);
+		return String.valueOf(myR.nextInt(MY_HIGH_DATA - MY_LOW_DATA) + MY_LOW_DATA);
 	}
 	
+	@Override
 	public String toString() {
-		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + "  g/m³";
+		return String.valueOf(myR.nextInt(MY_HIGH_DATA - MY_LOW_DATA) + MY_LOW_DATA) + "  g/m³";
 	}
 
 }

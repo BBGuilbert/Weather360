@@ -6,28 +6,35 @@
 package sensor;
 
 /**
- * @author Nicholas La Tour-Telles
- *
+ * This is the RainFallSensor class that represents
+ * the rain fall sensor of the weather system.
+ * 
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
+ * @version 12.9.19
  */
 public class RainfallSensor extends AbstractSensor {
 
+	/** Lower bound of the rainfall sensor. */
+	private static final int LOW_DATA = 0;
 	
-	private int myLowData = 0;
-	private int myHighData= 10;
+	/** Upper bound of the rainfall sensor. */
+	private static final int HIGH_DATA= 10;
 	
 	/**
-	 * 
+	 * Initializes the sensor fields.
 	 */
 	public RainfallSensor() {
 		super();
 	}
 
+	@Override
 	public String getData() {
-		return String.valueOf((myR.nextInt(myHighData - myLowData) + myLowData)/10.0);
+		return String.valueOf((myR.nextInt(HIGH_DATA - LOW_DATA) + LOW_DATA)/10.0);
 	}
 	
+	@Override
 	public String toString() {
-		return String.valueOf((myR.nextInt(myHighData - myLowData) + myLowData)/10.0) + " inches";
+		return String.valueOf((myR.nextInt(HIGH_DATA - LOW_DATA) + LOW_DATA)/10.0) + " inches";
 	}
 
 }

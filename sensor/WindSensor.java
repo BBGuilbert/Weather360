@@ -6,39 +6,61 @@
 package sensor;
 
 /**
- * @author Nicholas La Tour-Telles
- *
+ * This is the WindSensor class that represents
+ * the wind sensor of the weather system.
+ * 
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
+ * @version 12.9.19
  */
 public class WindSensor extends AbstractSensor {
 
-	private String myDir[] = {"N", "NE", "E", "SE", "S", "SW", "W", "NW"};
-	private int myLowData = 1;
-	private int myHighData = 10;
+	/** Array of strings representing the different possible wind directions. */
+	private static final String DIR[] = {"N", "NE", "E", "SE", "S", "SW", "W", "NW"};
 	
+	/** Lower bound of the wind speed. */
+	private static final int LOW_DATA = 1;
 	
+	/** Upper bound of the wind speed. */
+	private static final int HIGH_DATA = 20;
+	
+	/**
+	 * Initializes the sensor fields.
+	 */
 	public WindSensor() {
 		super();
 	}
 	
+	@Override
 	public String getData() {
-		return "Wind speed - " + String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + 
-				" MPH | Direction - " + myDir[myR.nextInt(8)];
+		return "Wind speed - " + String.valueOf(myR.nextInt(HIGH_DATA - LOW_DATA) + LOW_DATA) + 
+				" MPH | Direction - " + DIR[myR.nextInt(8)];
 	}
 	
+	/**
+	 * Gets the wind direction.
+	 * 
+	 * @return String representing wind direction.
+	 */
 	public String getWindDirectionData() {
-		return myDir[myR.nextInt(8)];
+		return DIR[myR.nextInt(8)];
 	}
 	
-	public String getWindDirectionDataString() {
-		return myDir[myR.nextInt(8)];
-	}
-	
+	/**
+	 * Gets the wind speed data.
+	 * 
+	 * @return String representing wind speed.
+	 */
 	public String getWindSpeedData() {
-		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData);
+		return String.valueOf(myR.nextInt(HIGH_DATA - LOW_DATA) + LOW_DATA);
 	}
 	
+	/**
+	 * Gets the wind speed data with units. 
+	 * 
+	 * @return String representing wind speed with units.
+	 */
 	public String getWindSpeedDataString() {
-		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + " mph";
+		return String.valueOf(myR.nextInt(HIGH_DATA - LOW_DATA) + LOW_DATA) + " mph";
 	}
 
 }
