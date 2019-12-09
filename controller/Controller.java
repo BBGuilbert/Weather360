@@ -15,7 +15,7 @@ import view.GUIWeatherStation;
  * This is the Controller class connects the weather
  * system to the graphical user interface.
  * 
- * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Britanny Guilbert, Duc Chau
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
  * @version 12.9.19
  */
 public class Controller implements PropertyChangeListener {

@@ -14,7 +14,7 @@ import java.util.List;
  * This is the class that handles the database
  * for the weather system.
  * 
- * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Britanny Guilbert, Duc Chau
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
  * @version 12.9.19
  */
 public class WeatherDatabase {

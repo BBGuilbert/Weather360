@@ -30,21 +30,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+/**
+ * This is the GUI that displays the historical
+ * data of the weather system.
+ * 
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
+ * @version 12.9.19
+ */
 public class GUIHistoricalData {
-	
-	private JFrame myFrame;
-	
-	private JPanel myMainPanel;
-	
-	private JPanel myTitlePanel;
-	
-	private JPanel myDataPanel;
-	
-	private JPanel myButtonPanel;
-	
-	private JButton myExitButton;
-	
-	private Map<String, Integer> myDatabaseMap;
 	
 	/**
 	 * This is the database file for the program. A new line represents a new entry to the database. Different 
@@ -53,11 +46,39 @@ public class GUIHistoricalData {
 	 */
 	private static final File DATABASE_FILE = new File("database.csv");
 	
+	/** The frame of the GUI. */
+	private JFrame myFrame;
+	
+	/** The main panel of the GUI. */
+	private JPanel myMainPanel;
+	
+	/** The title panel of the GUI. */
+	private JPanel myTitlePanel;
+	
+	/** The data panel of the GUI. */
+	private JPanel myDataPanel;
+	
+	/** The panel containing the button of the GUI. */
+	private JPanel myButtonPanel;
+	
+	/** The exit button of the GUI. */
+	private JButton myExitButton;
+	
+	/** The map containing a mapping of the specified weather data field and its corresponding index. */
+	private Map<String, Integer> myDatabaseMap;
+	
+	/**
+	 * Sets up the GUI for the historical data
+	 * and the database mapping. 
+	 */
 	public GUIHistoricalData() {
 		setUpDatabaseMap();
 		setUpGUIHistoricalData();
 	}
 	
+	/**
+	 * Sets up the GUI for the historical data.
+	 */
 	private void setUpGUIHistoricalData() {
 		setUpTitlePanel();
 		setUpButtonPanel();
@@ -65,6 +86,9 @@ public class GUIHistoricalData {
 		setUpFrame();
 	}
 	
+	/** 
+	 * Sets up the frame of the user interface.
+	 */
 	private void setUpFrame() {
 		myFrame = new JFrame();
 		myFrame.add(myMainPanel);
@@ -75,11 +99,20 @@ public class GUIHistoricalData {
 		myFrame.setResizable(false);	
 	}
 	
+	/**
+	 * Shows the frame with the specified columns 
+	 * in the JTable.
+	 * 
+	 * @param theColumns The columns that are displayed in the JTable.
+	 */
 	public void showFrame(String[] theColumns) {
 		setUpDataPanel(theColumns);
 		myFrame.setVisible(true);
 	}
 	
+	/**
+	 * Sets up the title panel of the GUI.
+	 */
 	private void setUpTitlePanel() {
 		myTitlePanel = new JPanel();
 		JLabel title = new JLabel("Historical Data");
@@ -87,6 +120,13 @@ public class GUIHistoricalData {
 		myTitlePanel.add(title);
 	}
 	
+	/**
+	 * Sets up the panel holding the data in the
+	 * JTable. Uses selectedData to display the
+	 * correct columns.
+	 * 
+	 * @param selectedData The data that was selected to be displayed.
+	 */
 	private void setUpDataPanel(String[] selectedData) {
 		if(selectedData.length == 0) {
 			myDataPanel.add(new JLabel("No data selected."));
@@ -128,6 +168,9 @@ public class GUIHistoricalData {
 		myDataPanel.add(myScrollPane);
 	}
 	
+	/**
+	 * Sets up the button panel of the GUI.
+	 */
 	private void setUpButtonPanel() {
 		myButtonPanel = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();		
@@ -150,6 +193,9 @@ public class GUIHistoricalData {
 		myButtonPanel.add(myExitButton, c);
 	}
 	
+	/**
+	 * Sets up the main panel of the GUI.
+	 */
 	private void setUpMainPanel() {
 		myMainPanel = new JPanel(new BorderLayout());
 		myDataPanel = new JPanel(new GridLayout());
@@ -158,7 +204,10 @@ public class GUIHistoricalData {
 		myMainPanel.add(myButtonPanel, BorderLayout.WEST);
 	}
 	
-	
+	/**
+	 * Sets up the database mapping of the
+	 * weather system.
+	 */
 	private void setUpDatabaseMap() {
 		myDatabaseMap = new HashMap<>();
 		myDatabaseMap.put("Date",0);
@@ -171,5 +220,4 @@ public class GUIHistoricalData {
 		myDatabaseMap.put("Rainfall",7);
 		myDatabaseMap.put("Barometer",8);
 	}
-
 }
