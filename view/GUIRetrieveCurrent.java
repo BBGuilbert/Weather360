@@ -53,7 +53,7 @@ public class GUIRetrieveCurrent {
 		myFrame = new JFrame();
 		myFrame.add(myMainPanel);
 		myFrame.setTitle("Download Current Data");
-		myFrame.setBounds(0, 0, 600, 400);
+		myFrame.setBounds(0, 0, 800, 400);
 		myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		myFrame.setLocationRelativeTo(null);
 		myFrame.setResizable(false);	
@@ -75,7 +75,7 @@ public class GUIRetrieveCurrent {
 		myCheckBoxPanel = new JPanel(new GridLayout(3,3));
 		createCheckBox("Date");
 		createCheckBox("Time");
-		createCheckBox("Forecast");
+		createCheckBox("Current Conditions");
 		createCheckBox("Wind Speed");
 		createCheckBox("Wind Direction");
 		createCheckBox("Humidity");

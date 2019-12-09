@@ -80,7 +80,7 @@ public class GUIWeatherStation implements PropertyChangeListener {
 	
 	public void fetchAllData() {
 		String[] retrieveAllData = 
-			{"Date", "Time", "Forecast", "Wind Speed", "Wind Direction", "Humidity", "Dew Point", "Rainfall", "Barometer"};
+			{"Date", "Time", "Current Conditions", "Wind Speed", "Wind Direction", "Humidity", "Dew Point", "Rainfall", "Barometer"};
         myPCS.firePropertyChange("retrieve", null, retrieveAllData);  
 
 	}
@@ -160,18 +160,17 @@ public class GUIWeatherStation implements PropertyChangeListener {
 	}
 	
 	private void setUpButtons() {
-		myRetrieveDatabaseButton = new JButton("Retrieve Historical Data");
+		myRetrieveDatabaseButton = new JButton("Download Historical Data");
 		myRetrieveDatabaseButton.setPreferredSize(new Dimension(180,80));
 		myRetrieveDatabaseButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				myHistoricalPopUp.showFrame();
-				// TODO Auto-generated method stub
 			}
 			
 		});
-		myRetrieveCurrentButton = new JButton("Retrieve Current Data");
+		myRetrieveCurrentButton = new JButton("Download Current Data");
 		myRetrieveCurrentButton.setPreferredSize(new Dimension(180,80));
 		myRetrieveCurrentButton.addActionListener(new ActionListener() {
 
@@ -227,7 +226,7 @@ public class GUIWeatherStation implements PropertyChangeListener {
 	private void setUpForecastPanel() {
 		myForecastPanel = new JPanel(new GridLayout(2,1));
 		
-		JLabel tempLabel = new JLabel("Forecast");
+		JLabel tempLabel = new JLabel("Current Conditions");
 		JTextArea tempArea = new JTextArea();
 		
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
@@ -285,7 +284,7 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		myDatabaseMap = new HashMap<>();
 		myDatabaseMap.put("Date",0);
 		myDatabaseMap.put("Time",1);
-		myDatabaseMap.put("Forecast",2);
+		myDatabaseMap.put("Current Conditions",2);
 		myDatabaseMap.put("Wind Speed",3);
 		myDatabaseMap.put("Wind Direction",4);
 		myDatabaseMap.put("Humidity",5);

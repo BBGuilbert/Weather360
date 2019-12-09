@@ -44,7 +44,7 @@ public class GUIHistoricalData {
 	/**
 	 * This is the database file for the program. A new line represents a new entry to the database. Different 
 	 * columns are separated by commas, in the following order:
-	 * Date, Time, Forecast, Wind Speed, Wind Direction, Humidity, Dew Point, Rainfall, Barometer.
+	 * Date, Time, Current Conditions, Wind Speed, Wind Direction, Humidity, Dew Point, Rainfall, Barometer.
 	 */
 	private static final File DATABASE_FILE = new File("database.csv");
 	
@@ -83,6 +83,10 @@ public class GUIHistoricalData {
 	}
 	
 	private void setUpDataPanel(String[] selectedData) {
+		if(selectedData.length == 0) {
+			myDataPanel.add(new JLabel("No data selected."));
+			return;
+		}
 		myDataPanel.removeAll();
 		Set<Integer> selectedIndices = new HashSet<>();
 		for(String i : selectedData) {
@@ -154,7 +158,7 @@ public class GUIHistoricalData {
 		myDatabaseMap = new HashMap<>();
 		myDatabaseMap.put("Date",0);
 		myDatabaseMap.put("Time",1);
-		myDatabaseMap.put("Forecast",2);
+		myDatabaseMap.put("Current Conditions",2);
 		myDatabaseMap.put("Wind Speed",3);
 		myDatabaseMap.put("Wind Direction",4);
 		myDatabaseMap.put("Humidity",5);
