@@ -28,7 +28,7 @@ public class HumiditySensor extends AbstractSensor {
 	}
 	
 	public String toString() {
-		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + " g/m3";
+		return String.valueOf(myR.nextInt(myHighData - myLowData) + myLowData) + "  g/m³";
 	}
 
 }
