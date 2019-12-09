@@ -24,28 +24,50 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * This is the GUI that displays the retrieve
+ * current data information.
+ * 
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
+ * @version 12.9.19
+ */
 public class GUIRetrieveCurrent {
 	
-	private JFrame myFrame;
-	
-	private JPanel myMainPanel;
-	
-	private JPanel myTitlePanel;
-	
-	private JPanel myCheckBoxPanel;
-	
-	private JPanel myButtonPanel;
-	
-	private JButton myViewButton;
-	
-	private List<JCheckBox> myCheckBoxes;
-	
+	/** The property change support of this GUI. */
 	private final PropertyChangeSupport myPCS = new PropertyChangeSupport(this);
 	
+	/** The frame of the GUI. */
+	private JFrame myFrame;
+	
+	/** The main panel of the GUI. */
+	private JPanel myMainPanel;
+	
+	/** The title panel of the GUI. */
+	private JPanel myTitlePanel;
+	
+	/** The panel containing the JCheckBox of the GUI. */
+	private JPanel myCheckBoxPanel;
+	
+	/** The button panel of the GUI. */
+	private JPanel myButtonPanel;
+	
+	/** The view button of the GUI. */
+	private JButton myViewButton;
+	
+	/** The list of JCheckBox used in the GUI. */
+	private List<JCheckBox> myCheckBoxes;
+	
+	/**
+	 * Sets up the components of the GUI.
+	 */
 	public GUIRetrieveCurrent() {
 		setUpGUIRetrieveCurrent();
 	}
 	
+	/**
+	 * Sets up individual components of the
+	 * user interface.
+	 */
 	private void setUpGUIRetrieveCurrent() {
 		setUpTitlePanel();
 		setUpCheckBoxPanel();
@@ -54,6 +76,9 @@ public class GUIRetrieveCurrent {
 		setUpFrame();
 	}
 	
+	/**
+	 * Sets up the frame of the GUI.
+	 */
 	private void setUpFrame() {
 		myFrame = new JFrame();
 		myFrame.add(myMainPanel);
@@ -64,10 +89,16 @@ public class GUIRetrieveCurrent {
 		myFrame.setResizable(false);	
 	}
 	
+	/** 
+	 * Displays the frame.
+	 */
 	public void showFrame() {
 		myFrame.setVisible(true);
 	}
 	
+	/** 
+	 * Sets up the title panel of the GUI.
+	 */
 	private void setUpTitlePanel() {
 		myTitlePanel = new JPanel();
 		JLabel title = new JLabel("Download Current Data");
@@ -75,6 +106,9 @@ public class GUIRetrieveCurrent {
 		myTitlePanel.add(title);
 	}
 	
+	/**
+	 * Sets up the check box panel of the GUI.
+	 */
 	private void setUpCheckBoxPanel() {
 		myCheckBoxes = new ArrayList<>();
 		myCheckBoxPanel = new JPanel(new GridLayout(3,3));
@@ -94,6 +128,12 @@ public class GUIRetrieveCurrent {
 		
 	}
 	
+	/** 
+	 * Creates the check box with the specified
+	 * name.
+	 * 
+	 * @param name The name of the JCheckBox.
+	 */
 	private void createCheckBox(String name) {
 		JCheckBox temp = new JCheckBox(name);
 		temp.setFont(temp.getFont().deriveFont(13.0f));
@@ -101,6 +141,9 @@ public class GUIRetrieveCurrent {
 		myCheckBoxPanel.add(temp);
 	}
 	
+	/** 
+	 * Sets up the button panel of the GUI.
+	 */
 	private void setUpButtonPanel() {
 		myButtonPanel = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();		
@@ -121,7 +164,6 @@ public class GUIRetrieveCurrent {
 						checkedBoxes.add(box.getText());
 					}
 				}
-				// TODO send this list of checkedBoxes to GUIWeatherStation so it can update fields accordingly
 		        myPCS.firePropertyChange("retrieve", null, checkedBoxes.toArray(new String[checkedBoxes.size()]));  
 			}
 			
@@ -131,6 +173,9 @@ public class GUIRetrieveCurrent {
 		myButtonPanel.add(myViewButton, c);
 	}
 	
+	/**
+	 * Sets up the main panel of the GUI.
+	 */
 	private void setUpMainPanel() {
 		myMainPanel = new JPanel(new BorderLayout());
 		myMainPanel.add(myTitlePanel, BorderLayout.NORTH);

@@ -34,52 +34,78 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 /**
- * @author miclo
- *
+ * This is the main GUI of the weather system.
+ * 
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
+ * @version 12.9.19
  */
 public class GUIWeatherStation implements PropertyChangeListener {
 	
+	/** The date format of the weather system. */
 	private static final SimpleDateFormat MY_DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 	
+	/** The time format of the weather system. */
 	private static final SimpleDateFormat MY_TIME_FORMAT = new SimpleDateFormat("HH:mm:ss");
 	
+	/** The property change support of this GUI. */
 	private final PropertyChangeSupport myPCS = new PropertyChangeSupport(this);
 	
+	/** The frame of the GUI. */
 	private JFrame myFrame;
 	
+	/** The main panel of the GUI. */
 	private JPanel myMainPanel;
 	
+	/** The title panel of the GUI. */
 	private JPanel myTitlePanel;
 	
+	/** The button panel of the GUI. */
 	private JPanel myButtonPanel;
 	
+	/** The display panel of the GUI. */
 	private JPanel myDisplayPanel;
 	
+	/** The panel containing all sensor data. */
 	private JPanel mySensorPanel;
 	
+	/** The panel containing the current conditions. */
 	private JPanel myForecastPanel;
 	
+	/** The last retrieved time label. */
 	private JLabel myLastRetrievedLabel;
 	
+	/** The button to retrieve the database data. */
 	private JButton myRetrieveDatabaseButton;
 	
+	/** The button to retrieve the current data. */
 	private JButton myRetrieveCurrentButton;
 	
+	/** The list of display panels. */
 	private List<JPanel> myDisplayPanels;
 	
+	/** The list of text areas. */
 	private List<JTextArea> myDisplayAreas;
 	
+	/** The GUI used to retrieve the database. */
 	private GUIRetrieveDatabase myHistoricalPopUp;
 	
+	/** The GUI used to retrieve the current data. */
 	private GUIRetrieveCurrent myCurrentPopUp;
 	
+	/** The database mapping of the associated weather data field with its corresponding index. */
 	private Map<String, Integer> myDatabaseMap;
 	
+	/**
+	 * Sets up the GUI and the database mapping.
+	 */
 	public GUIWeatherStation() {
 		setUpDatabaseMap();
 		setUpGUI();
 	}
 	
+	/** 
+	 * Retrieves all current weather system data.
+	 */
 	public void fetchAllData() {
 		String[] retrieveAllData = 
 			{"Date", "Time", "Current Conditions", "Wind Speed", "Wind Direction", "Humidity", "Dew Point", "Rainfall", "Barometer"};
@@ -87,6 +113,9 @@ public class GUIWeatherStation implements PropertyChangeListener {
 
 	}
 	
+	/** 
+	 * Sets up individual components of the GUI.
+	 */
 	private void setUpGUI() {
 		setUpFrames();
 		setUpTitlePanel();
@@ -96,6 +125,9 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		setUpFrame();
 	}
 	
+	/**
+	 * Sets up the frame of the GUI.
+	 */
 	private void setUpFrame() {
 		myFrame = new JFrame();
 		myFrame.add(myMainPanel);
@@ -107,6 +139,9 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		myFrame.setVisible(true);
 	}
 	
+	/**
+	 * Sets up the title panel of the GUI.
+	 */
 	private void setUpTitlePanel() {
 		myTitlePanel = new JPanel();
 		JLabel title = new JLabel("Weather Station");
@@ -114,7 +149,9 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		myTitlePanel.add(title);
 	}
 
-	
+	/** 
+	 * Sets up the button panel of the GUI.
+	 */
 	private void setUpButtonPanel() {
 		myButtonPanel = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();		
@@ -136,12 +173,23 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		myButtonPanel.add(myLastRetrievedLabel, c);
 	}
 	
+	/**
+	 * Updates the label that displays when data
+	 * was last retrieved. 
+	 */
 	private void updateLastRetrievedLabel() {
 		String tempDate = MY_DATE_FORMAT.format(new Date());
 		String tempTime = MY_TIME_FORMAT.format(new Date());
 		myLastRetrievedLabel.setText("<html><body>Data last retrieved on:<br> " + tempDate + " at " + tempTime + "</body></html>");
 	}
 	
+	/**
+	 * Updates the selected fields in the graphical 
+	 * user interface.
+	 * 
+	 * @param fetchedData The data that was fetched from the weather system.
+	 * @param selectedData The data that was selected by the user to be updated.
+	 */
 	private void updateSelectedFields(String[] fetchedData, String[] selectedData) {
 		Set<Integer> selectedIndices = new HashSet<>();
 		for(String i : selectedData) {
@@ -154,6 +202,14 @@ public class GUIWeatherStation implements PropertyChangeListener {
 			}
 	}
 	
+	/**
+	 * Updates the data in the GUI and updates
+	 * the time and date when data was last 
+	 * retrieved. 
+	 * 
+	 * @param fetchedData The data that was fetched from the weather system.
+	 * @param selectedData The data that was selected by the user to be updated.
+	 */
 	public void updateData(String[] fetchedData, String[] selectedFields) {
 		updateSelectedFields(fetchedData, selectedFields);
 		if(selectedFields.length > 2) {
@@ -161,6 +217,9 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		}
 	}
 	
+	/**
+	 * Sets up the buttons of the GUI.
+	 */
 	private void setUpButtons() {
 		myRetrieveDatabaseButton = new JButton("Download Historical Data");
 		myRetrieveDatabaseButton.setPreferredSize(new Dimension(180,80));
@@ -185,6 +244,9 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		
 	}
 	
+	/**
+	 * Sets up the display panel of the GUI.
+	 */
 	private void setUpDisplayPanel() {
 		myDisplayPanels = new ArrayList<>();
 		myDisplayAreas = new ArrayList<>();
@@ -204,6 +266,12 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		myDisplayPanel.add(mySensorPanel, BorderLayout.CENTER);
 	}
 	
+	/**
+	 * Sets up the individual panels that contains the
+	 * label and its corresponding text area.
+	 * 
+	 * @param label The label associated with the panel.
+	 */
 	private void setUpIndividualDisplays(String label) {
 		JPanel tempPanel = new JPanel(new GridLayout(2,1));
 		
@@ -225,6 +293,9 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		myDisplayAreas.add(tempArea);
 	}
 	
+	/**
+	 * Sets up the forecast panel of the GUI.
+	 */
 	private void setUpForecastPanel() {
 		myForecastPanel = new JPanel(new GridLayout(2,1));
 		
@@ -244,6 +315,9 @@ public class GUIWeatherStation implements PropertyChangeListener {
 	    myDisplayAreas.add(tempArea);
 	}
 	
+	/**
+	 * Sets up the main panel of the GUI.
+	 */
 	private void setUpMainPanel() {
 		myMainPanel = new JPanel(new BorderLayout());
 		myMainPanel.add(myTitlePanel, BorderLayout.NORTH);
@@ -251,6 +325,9 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		myMainPanel.add(myButtonPanel, BorderLayout.WEST);
 	}
 	
+	/**
+	 * Sets up the different frames of the GUI.
+	 */
 	private void setUpFrames() {
 		myHistoricalPopUp = new GUIRetrieveDatabase();
 		myCurrentPopUp = new GUIRetrieveCurrent();
@@ -282,6 +359,10 @@ public class GUIWeatherStation implements PropertyChangeListener {
         myPCS.removePropertyChangeListener(theListener);
     }
     
+    /**
+     * Sets up the database mapping of the 
+     * weather system.
+     */
 	private void setUpDatabaseMap() {
 		myDatabaseMap = new HashMap<>();
 		myDatabaseMap.put("Date",0);
@@ -294,7 +375,4 @@ public class GUIWeatherStation implements PropertyChangeListener {
 		myDatabaseMap.put("Rainfall",7);
 		myDatabaseMap.put("Barometer",8);
 	}
-
-
-
 }

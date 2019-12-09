@@ -22,28 +22,50 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * This is the GUI that displays the retrieve
+ * database information.
+ * 
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
+ * @version 12.9.19
+ */
 public class GUIRetrieveDatabase {
 	
+	/** The frame of the GUI. */
 	private JFrame myFrame;
 	
+	/** The historical data frame. */
 	private GUIHistoricalData myHistoricalDataFrame;
 	
+	/** The main panel of the GUI. */
 	private JPanel myMainPanel;
 	
+	/** The title panel of the GUI. */
 	private JPanel myTitlePanel;
 	
+	/** The check box panel of the GUI. */
 	private JPanel myCheckBoxPanel;
 	
+	/** The button panel of the GUI. */
 	private JPanel myButtonPanel;
 	
+	/** The view button of the GUI. */
 	private JButton myViewButton;
 	
+	/** The list of checkboxes of the GUI. */
 	private List<JCheckBox> myCheckBoxes;
 	
+	/** 
+	 * Sets up the components of the GUI.
+	 */
 	public GUIRetrieveDatabase() {
 		setUpGUIRetrieveDatabase();
 	}
 	
+	/**
+	 * Sets up individual components of the
+	 * user interface.
+	 */
 	private void setUpGUIRetrieveDatabase() {
 		setUpTitlePanel();
 		setUpCheckBoxPanel();
@@ -52,6 +74,9 @@ public class GUIRetrieveDatabase {
 		setUpFrame();
 	}
 	
+	/**
+	 * Sets up the frame of the GUI.
+	 */
 	private void setUpFrame() {
 		myHistoricalDataFrame = new GUIHistoricalData(); 
 		myFrame = new JFrame();
@@ -63,10 +88,16 @@ public class GUIRetrieveDatabase {
 		myFrame.setResizable(false);	
 	}
 	
+	/**
+	 * Displays the frame.
+	 */
 	public void showFrame() {
 		myFrame.setVisible(true);
 	}
 	
+	/**
+	 * Sets up the title panel of the GUI.
+	 */
 	private void setUpTitlePanel() {
 		myTitlePanel = new JPanel();
 		JLabel title = new JLabel("Download Historical Data from Database");
@@ -74,6 +105,9 @@ public class GUIRetrieveDatabase {
 		myTitlePanel.add(title);
 	}
 	
+	/**
+	 * Sets up the check box panel of the GUI.
+	 */
 	private void setUpCheckBoxPanel() {
 		myCheckBoxes = new ArrayList<>();
 		myCheckBoxPanel = new JPanel(new GridLayout(3,3));
@@ -88,6 +122,12 @@ public class GUIRetrieveDatabase {
 		createCheckBox("Barometer");
 	}
 	
+	/**
+	 * Creates an individual check box with
+	 * the specified name. 
+	 * 
+	 * @param name The name of the check box.
+	 */
 	private void createCheckBox(String name) {
 		JCheckBox temp = new JCheckBox(name);
 		temp.setFont(temp.getFont().deriveFont(13.0f));
@@ -95,6 +135,9 @@ public class GUIRetrieveDatabase {
 		myCheckBoxPanel.add(temp);
 	}
 	
+	/** 
+	 * Sets up the button panel of the GUI.
+	 */
 	private void setUpButtonPanel() {
 		myButtonPanel = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();		
@@ -124,12 +167,13 @@ public class GUIRetrieveDatabase {
 		myButtonPanel.add(myViewButton, c);
 	}
 	
+	/**
+	 * Sets up the main panel of the GUI.
+	 */
 	private void setUpMainPanel() {
 		myMainPanel = new JPanel(new BorderLayout());
 		myMainPanel.add(myTitlePanel, BorderLayout.NORTH);
 		myMainPanel.add(myCheckBoxPanel, BorderLayout.CENTER);
 		myMainPanel.add(myButtonPanel, BorderLayout.WEST);
 	}
-
-
 }
