@@ -3,7 +3,7 @@
  * Project 4
  */
 
-package tests;
+package Tests;
 
 import org.junit.Test;
 
@@ -41,7 +41,7 @@ public class DewPointSensorTest {
     @Test
     public void testGetData() 
     {
-    	String dewPoint = dew.getData();
+    	String dewPoint = dew.toString();
     	String dewPointNum = dewPoint.replace(" degrees", "");
     	int dewPointInt = Integer.parseInt(dewPointNum);
         assertTrue(dewPoint.endsWith(" degrees")); //check that dewPoint data ends with degrees

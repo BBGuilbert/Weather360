@@ -3,7 +3,7 @@
  * Project 4
  */
 
-package tests;
+package Tests;
 
 import org.junit.Test;
 
@@ -42,7 +42,7 @@ public class BarometerTest {
     @Test
     public void testGetData() 
     {
-    	String pressure = bar.getData();
+    	String pressure = bar.toString();
     	String pressureNum = pressure.replace(" millibars", "");
     	int pressureInt = Integer.parseInt(pressureNum);
         assertTrue(pressure.endsWith(" millibars")); //check that barometer data ends with millibars

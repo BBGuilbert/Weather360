@@ -3,7 +3,7 @@
  * Project 4
  */
 
-package tests;
+package Tests;
 
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ import org.junit.Before;
 
 public class HumiditySensorTest {
 
-	HumiditySensor dew;
+	HumiditySensor humSen;
 	
 	/**
      * @throws java.lang.Exception
@@ -23,7 +23,7 @@ public class HumiditySensorTest {
     @Before
     public void setUp() 
     {
-    	dew = new HumiditySensor();
+    	humSen = new HumiditySensor();
         
         
     }
@@ -34,10 +34,10 @@ public class HumiditySensorTest {
     @Test
     public void testGetData() 
     {
-    	String humidity = dew.getData();
-    	String humidityNum = humidity.replace(" g/m3", "");
+    	String humidity = humSen.toString();
+    	String humidityNum = humidity.replace("  g/m³", "");
     	int humidityInt = Integer.parseInt(humidityNum);
-        assertTrue(humidity.endsWith(" g/m3")); //check that dewPoint data ends with degrees
+        assertTrue(humidity.endsWith("  g/m³")); //check that dewPoint data ends with degrees
         
         //check that dewPoint data is in the proper range
         for(int i= 0; i<100; i++) {
