@@ -5,7 +5,6 @@
 
 package Tests;
 
-import org.junit.Test;
 
 import sensor.Barometer;
 
@@ -22,36 +21,23 @@ import org.junit.Before;
  *
  */
 
-public class BarometerTest {
+public class BarometerTest extends AbstractSensorTest{
 	Barometer bar;
 	
 	/**
      * @throws java.lang.Exception
      */
+	@Override
     @Before
     public void setUp() 
     {
-    	bar = new Barometer();
-        
+		mySensor =  new Barometer();  
+        mySuffix = " millibars";
+        myLow = 900;
+        myHigh = 1100;
         
     }
 
-    /**
-     * Test method for {@link sensor.Barometer#getData()}.
-     */
-    @Test
-    public void testGetData() 
-    {
-    	String pressure = bar.toString();
-    	String pressureNum = pressure.replace(" millibars", "");
-    	int pressureInt = Integer.parseInt(pressureNum);
-        assertTrue(pressure.endsWith(" millibars")); //check that barometer data ends with millibars
-        
-        //check that barometer data is in the proper range
-        for(int i= 0; i<100; i++) {
-	        assertTrue(pressureInt < 1101);
-	        assertTrue(pressureInt > 899);
-        }
-    }
+    
     
 }

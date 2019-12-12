@@ -1,3 +1,5 @@
 /BarometerTest.class
 /DewPointSensorTest.class
 /HumiditySensorTest.class
+/RainfallSensorTest.class
+/AbstractSensorTest.class
