@@ -6,10 +6,10 @@ This is a program that simulates a weather station software system. This allows 
 
 ## Authors
 
-Michael Zachary Loria	
-Dung Thai
-Brittany Breanne Guilbert
-Nicholas L La Tour-Telles
+Michael Zachary Loria\n
+Dung Thai\n
+Brittany Breanne Guilbert\n
+Nicholas L La Tour-Telles\n
 Duc Gia Chau
 
 ## Version
