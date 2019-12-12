@@ -16,7 +16,7 @@ import org.junit.Before;
 /**
  * Unit tests of the DewPointSensor class.
  * 
- * @author Brittany Guilbert
+ * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
  * @version 12/6/2019
  *
  */
