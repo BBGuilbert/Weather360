@@ -83,6 +83,27 @@ public class WindSensorTest extends AbstractSensorTest{
         }
     }
     
+    
+    /**
+     * Test method 
+     */
+    @Test
+    public void testGetWindDirectionData() 
+    {
+    	
+    	String direction = mySensor.getWindDirectionData();
+        
+        boolean isDirectCorrect=false;
+        for(int i = 0; i<8; i++) {
+			if(direction.contains(DIR[i])){
+				isDirectCorrect = true;
+			}
+		}
+        assertTrue(isDirectCorrect);
+       
+    }
+    
+    
     @Test
     public void testToString() 
     {
