@@ -46,11 +46,11 @@ public abstract class AbstractSensorTest {
     public void testGetData() 
     {
     	String name = mySensor.toString();
-    	String suffix = name.replace(mySuffix, "");
-    	double data = Double.parseDouble(suffix);
-        assertTrue(name.endsWith(mySuffix)); //check that barometer data ends with its suffix
+    	String sansSuffix = name.replace(mySuffix, "");
+    	double data = Double.parseDouble(sansSuffix);
+        assertTrue(name.endsWith(mySuffix)); //check that data ends with its suffix
         
-        //check that barometer data is in the proper range
+        //check that data is in the proper range
         for(int i= 0; i<100; i++) {
 	        assertTrue(data <= myHigh);
 	        assertTrue(data >= myLow);
