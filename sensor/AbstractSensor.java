@@ -36,4 +36,12 @@ public abstract class AbstractSensor {
 	 */
 	public abstract String getData();
 	
+	/**
+	 * Gets the string representation of the 
+	 * data in the sensor, with units.
+	 * 
+	 * @return String representation of the data.
+	 */
+	public abstract String toString();
+	
 }

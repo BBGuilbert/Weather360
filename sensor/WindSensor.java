@@ -62,5 +62,12 @@ public class WindSensor extends AbstractSensor {
 	public String getWindSpeedDataString() {
 		return String.valueOf(myR.nextInt(HIGH_DATA - LOW_DATA) + LOW_DATA) + " mph";
 	}
+	
+	//I just added this so that I could put toString in the abstract it is the same as get data in this class
+	@Override
+	public String toString() {
+		return "Wind speed - " + String.valueOf(myR.nextInt(HIGH_DATA - LOW_DATA) + LOW_DATA) + 
+				" MPH | Direction - " + DIR[myR.nextInt(8)];
+	}
 
 }

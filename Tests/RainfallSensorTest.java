@@ -5,18 +5,20 @@
 
 package Tests;
 
+import sensor.RainfallSensor;
+
+import org.junit.Before;
+
 /**
- * Unit tests of the HumiditySensor class.
+ * Unit tests of the Barometer class.
  * 
  * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
  * @version 12/6/2019
  *
  */
 
-import sensor.HumiditySensor;
-import org.junit.Before;
-
-public class HumiditySensorTest extends AbstractSensorTest{
+public class RainfallSensorTest extends AbstractSensorTest {
+	
 	
 	/**
      * @throws java.lang.Exception
@@ -25,11 +27,12 @@ public class HumiditySensorTest extends AbstractSensorTest{
     @Before
     public void setUp() 
     {
-		mySensor =  new HumiditySensor();  
-        mySuffix = "  g/m³";
-        myLow = 65;
-        myHigh = 81;        
+		mySensor =  new RainfallSensor();  
+        mySuffix = " inches";
+        myLow = 0;
+        myHigh = 10;
+        
     }
-
-	
+	 
+    
 }
