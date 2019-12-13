@@ -1,13 +1,10 @@
-package Tests;
+package tests;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sensor.Barometer;
@@ -26,7 +23,7 @@ import model.Console;
  * @authors Michael Zachary Loria, Dung Thai, Nicholas La Tour-Telles, Brittany Guilbert, Duc Chau
  * @version 12.12.19
  */
-class ConsoleTest extends Console {
+public class ConsoleTest extends Console {
 
 	private Console myConsole;
 	
@@ -78,6 +75,7 @@ class ConsoleTest extends Console {
 	 */
 	@Test
 	public void testgetSensorData() {
+		myConsole.getSensorData();
 		//Checking if getting the date is correct
 		String myDate = MY_DATE_FORMAT.format(new Date());
 		String[] myDateParsed = myDate.split("-");
