@@ -3,7 +3,7 @@
  * Project 4
  */
 
-package Tests;
+package tests;
 
 import sensor.DewPointSensor;
 
