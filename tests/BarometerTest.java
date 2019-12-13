@@ -8,8 +8,6 @@ package tests;
 
 import sensor.Barometer;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Before;
 
 
