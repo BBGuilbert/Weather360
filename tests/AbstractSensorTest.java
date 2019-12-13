@@ -3,12 +3,11 @@
  * Project 4
  */
 
-package Tests;
+package tests;
 
 import org.junit.Test;
 
 import sensor.AbstractSensor;
-import sensor.Barometer;
 
 import static org.junit.Assert.assertTrue;
 
@@ -38,12 +37,22 @@ public abstract class AbstractSensorTest {
     {
           
     }
-
+    
     /**
      * Test method 
      */
     @Test
     public void testGetData() 
+    {
+    	assertTrue(Double.parseDouble(mySensor.getData()) <= myHigh);
+        assertTrue(Double.parseDouble(mySensor.getData()) >= myLow);
+    }
+
+    /**
+     * Test method 
+     */
+    @Test
+    public void testToString() 
     {
     	String name = mySensor.toString();
     	String sansSuffix = name.replace(mySuffix, "");
@@ -54,8 +63,6 @@ public abstract class AbstractSensorTest {
         for(int i= 0; i<100; i++) {
 	        assertTrue(data <= myHigh);
 	        assertTrue(data >= myLow);
-	        assertTrue(Double.parseDouble(mySensor.getData()) <= myHigh);
-	        assertTrue(Double.parseDouble(mySensor.getData()) >= myLow);
         }
     }
     
